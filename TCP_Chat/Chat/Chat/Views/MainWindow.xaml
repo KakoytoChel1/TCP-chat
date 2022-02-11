@@ -1,0 +1,268 @@
+﻿<Window x:Class="Chat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:Chat" xmlns:behaviors1="clr-namespace:Chat.ViewModels" xmlns:i1="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="580" MinHeight="580"  Width="1000" BorderThickness="0" WindowStartupLocation="CenterScreen" Background="Transparent"  WindowStyle="None" AllowsTransparency="True" >
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome/>
+    </WindowChrome.WindowChrome>
+
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--цветовой стиль для всего окна-->
+        <SolidColorBrush x:Key="color" Color="#3E4EB8"/>
+
+
+
+        <Style x:Key="WinControls" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{DynamicResource color}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="simpleButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="15"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Opacity" TargetName="border" Value="0.7"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Opacity" TargetName="border" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border CornerRadius="15" x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Padding" Value="4,1"/>
+            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Height" Value="auto"/>
+            <Setter Property="Margin" Value="15,0,0,0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <Grid>
+                                <WrapPanel VerticalAlignment="Top"  Height="25">
+                                    <TextBlock Foreground="{DynamicResource color}" FontSize="14" VerticalAlignment="Top"  Height="25" Text="{Binding Name}"/>
+                                    <TextBlock Foreground="Gray" Margin="15,0,0,0" FontSize="13" Padding="8,3,0,0" Text="{Binding Time}" Width="50"/>
+                                </WrapPanel>
+                                <TextBlock Foreground="White"  FontSize="15" Text="{Binding Message}" TextWrapping="Wrap" MinHeight="40" Margin="0,30,0,0"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border CornerRadius="10" BorderThickness="1" BorderBrush="White" Background="#121212">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition x:Name="chatColumn"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel  Grid.Column="2" Margin="0,5,10,0" WindowChrome.IsHitTestVisibleInChrome="True" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnMinimize" Width="30" Style="{DynamicResource WinControls}">
+                    <Image Source="images/minimizeButton.png" Width="14" Margin="0,8,0,0"/>
+                </Button>
+                <Button x:Name="btnFullScreen" Width="30" Style="{DynamicResource WinControls}">
+                    <Image Source="images/fullscreen.png" Width="17"/>
+                </Button>
+                <Button x:Name="btnClose" Width="30" Style="{DynamicResource WinControls}">
+                    <Image Source="images/closeButton.png" Width="20"/>
+                </Button>
+            </StackPanel>
+            <!--для списка пользователей-->
+            <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Background="#1f2023">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--between user client and server client-->
+                <Grid>
+                    <TextBox x:Name="uName" Text="{Binding Name , UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsEnable1}" Height="35" Style="{DynamicResource TextBoxStyle}" Background="#121212" Foreground="White"  FontSize="14" Padding="10,8,0,0" VerticalAlignment="Top" Margin="10,30,10,0" Grid.ColumnSpan="2"/>
+                    <TextBlock IsHitTestVisible="False" Padding="20,0,0,0" Text="User name" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,38,0,0" Foreground="DarkGray">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=uName}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBox x:Name="ipName" Text="{Binding Ip , UpdateSourceTrigger=PropertyChanged}" Height="35" IsEnabled="{Binding IsEnable1}" Style="{DynamicResource TextBoxStyle}" Background="#121212" Foreground="White" FontSize="14" Padding="10,8,0,0" VerticalAlignment="Top" Margin="10,80,10,0" Grid.ColumnSpan="2"/>
+                    <TextBlock IsHitTestVisible="False" Padding="20,0,0,0" Text="IP-Address of the server" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,88,0,0" Foreground="DarkGray" Grid.ColumnSpan="2">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=ipName}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBox x:Name="portName" Text="{Binding Port , UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsEnable1}" Height="35" Style="{DynamicResource TextBoxStyle}" Background="#121212" Foreground="White" FontSize="14" Padding="10,8,0,0" VerticalAlignment="Top" Margin="10,130,10,0" Grid.ColumnSpan="2"/>
+                    <TextBlock IsHitTestVisible="False" Padding="20,0,0,0" Text="Port" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,138,0,0" Foreground="DarkGray">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=portName}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+
+                    <Button x:Name="bDisCon" Command="{Binding ConnectCommand}" Height="40" Content="{Binding Cd}" FontSize="14" Margin="50,185,50,0" VerticalAlignment="Top" Style="{DynamicResource simpleButton}" Background="{DynamicResource color}" Grid.ColumnSpan="2" />
+                </Grid>
+            </Grid>
+            <Grid  Grid.Row="1" Grid.Column="2" >
+                <TextBlock Grid.Row="1" Width="200" Height="40" Foreground="Gray" Text="Not connected" TextAlignment="Center" FontSize="15" Grid.ColumnSpan="2"  />
+                <Grid Grid.Row="1" Visibility="{Binding Vis}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto" MinHeight="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox Grid.Column="1"  ItemsSource="{Binding msgBlocks , UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding SelectedI}" x:Name="lbWithMessages"  ScrollViewer.VerticalScrollBarVisibility="Hidden"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#121212" BorderThickness="0">
+                            <i1:Interaction.Behaviors>
+                                <behaviors1:ListBoxScrollIntoViewBehavior/>
+                            </i1:Interaction.Behaviors>
+                        </ListBox>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <TextBox x:Name="textMessageBox" Text="{Binding Message , UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Foreground="White"  FontSize="16" TextWrapping="Wrap" Padding="10" Height="auto" MinHeight="20" Margin="20,20,20,20" BorderThickness="0" Background="#27292d" Style="{DynamicResource TextBoxStyle}">
+                            <TextBox.InputBindings>
+                                <KeyBinding 
+                            Key="Enter"
+                            Command="{Binding SendText}"
+                            />
+                            </TextBox.InputBindings>
+                        </TextBox>
+                        <TextBlock IsHitTestVisible="False" Padding="20,0,0,0" Text="Message..." FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=textMessageBox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Border Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="{DynamicResource color}">
+            </Border>
+        </Grid>
+    </Border>
+</Window>

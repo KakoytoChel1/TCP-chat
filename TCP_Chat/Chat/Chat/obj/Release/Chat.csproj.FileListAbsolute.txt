@@ -1,0 +1,16 @@
+C:\Users\Ivanchik228\source\repos\Chat\Chat\bin\Release\Chat.exe.config
+C:\Users\Ivanchik228\source\repos\Chat\Chat\bin\Release\Chat.exe
+C:\Users\Ivanchik228\source\repos\Chat\Chat\bin\Release\Chat.pdb
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Views\MainWindow.g.cs
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\App.g.cs
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Chat_MarkupCompile.cache
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Chat_MarkupCompile.lref
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Views\MainWindow.baml
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Chat.g.resources
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Chat.Properties.Resources.resources
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Chat.csproj.GenerateResource.cache
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Chat.csproj.CoreCompileInputs.cache
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Chat.exe
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Chat.pdb
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Chat.csproj.AssemblyReference.cache
+C:\Users\Ivanchik228\source\repos\Chat\Chat\obj\Release\Chat.csproj.SuggestedBindingRedirects.cache

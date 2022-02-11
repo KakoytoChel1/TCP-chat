@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "2ba5cc2e-c1b6-46ce-be8d-f78b1c252c38": {
+      "ProjectGuid": "2ba5cc2e-c1b6-46ce-be8d-f78b1c252c38",
+      "DisplayName": "Chat",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    },
+    "bc2f2082-9e7c-4e84-89bb-218cd53593e2": {
+      "ProjectGuid": "bc2f2082-9e7c-4e84-89bb-218cd53593e2",
+      "DisplayName": "Server",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

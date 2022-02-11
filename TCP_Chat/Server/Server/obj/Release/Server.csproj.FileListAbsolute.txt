@@ -1,0 +1,6 @@
+C:\Users\Ivanchik228\source\repos\Server\Server\bin\Release\Server.exe.config
+C:\Users\Ivanchik228\source\repos\Server\Server\bin\Release\Server.exe
+C:\Users\Ivanchik228\source\repos\Server\Server\bin\Release\Server.pdb
+C:\Users\Ivanchik228\source\repos\Server\Server\obj\Release\Server.csproj.CoreCompileInputs.cache
+C:\Users\Ivanchik228\source\repos\Server\Server\obj\Release\Server.exe
+C:\Users\Ivanchik228\source\repos\Server\Server\obj\Release\Server.pdb
